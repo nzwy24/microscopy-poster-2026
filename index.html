@@ -35,7 +35,10 @@ main {padding:32px 18px 65px;}
 .viewer video {width:100%;height:100%;object-fit:contain;display:block;}
 /* Co-expression videos have very different original aspect ratios. */
 .coex-egfp {grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,1fr);align-items:stretch;}
-.coex-egfp .viewer {aspect-ratio:2/1;}
+/* Let the grid track control viewer width; aspect ratio must not force it into the description. */
+.coex-egfp .viewer {aspect-ratio:auto;min-width:0;width:100%;height:100%;}
+.coex-egfp .viewer video {min-width:0;max-width:100%;object-fit:contain;}
+.coex-egfp .card-inner {min-width:0;}
 .coex-mcherry {grid-column:1/-1;}
 .coex-mcherry .viewer {aspect-ratio:16/1;min-height:110px;}
 
@@ -47,6 +50,7 @@ footer {border-top:1px solid var(--line);padding:24px 18px 36px;text-align:cente
  .card.tip{display:block;}
  .tip .viewer{max-height:none;aspect-ratio:3/2;}
  .coex-egfp{display:block;}
+ .coex-egfp .viewer{aspect-ratio:2/1;height:auto;}
  .coex-mcherry .viewer{min-height:110px;}
  .card-inner{padding:16px 17px 20px;}
  .card h3{font-size:19px;margin-bottom:13px;}
